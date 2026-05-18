@@ -67,13 +67,27 @@ const tipoMisterio = getMysteriesByDay();
 const misteriosDoDia =
   misterios[tipoMisterio];
 
+const [finalizado, setFinalizado] = useState(() => {
+
+  const progressoSalvo =
+    localStorage.getItem("progressoTerco");
+
+  if (progressoSalvo) {
+    return JSON.parse(progressoSalvo).finalizado;
+  }
+
+  return false;
+
+});
+
 useEffect(() => {
 
   const progresso = {
     contaAtual,
     misterioAtual,
     tipoOracao,
-    faseInicial
+    faseInicial,
+    finalizado
   };
 
   localStorage.setItem(
@@ -81,10 +95,8 @@ useEffect(() => {
     JSON.stringify(progresso)
   );
 
-}, [contaAtual, misterioAtual, tipoOracao, faseInicial]);
+}, [contaAtual, misterioAtual, tipoOracao, faseInicial, finalizado]);
 
-const [finalizado, setFinalizado] =
-  useState(false);
 
 function resetarTerco() {
 
@@ -109,7 +121,7 @@ function voltarConta() {
     contaAtual > 1
   ) {
 
-    setContaAtual(contaAtual - 1);
+    setContaAtual (contaAtual - 1);
 
   }
 
@@ -170,11 +182,31 @@ function avancarConta() {
 
       setTipoOracao("paiNosso");
 
-    } else {
+      return;
 
-      setFinalizado(true);
+    }
 
-    } 
+    setTipoOracao("salveRainha");
+
+    return;
+
+  }
+
+  if (tipoOracao === "salveRainha") {
+
+    setTipoOracao("oracaoFinal");
+
+    return;
+
+  }
+
+  if (tipoOracao === "oracaoFinal") {
+
+    setFinalizado(true);
+
+    localStorage.removeItem("progressoTerco");
+
+    return;
 
   }
 
@@ -312,6 +344,10 @@ return (
 
           {tipoOracao === "oracaoDeFatima" && "Oração de Fátima"}
 
+          {tipoOracao === "salveRainha" && "Salve Rainha"}
+
+          {tipoOracao === "oracaoFinal" && "Oração Final"}
+
         </h3>
 
         <p className="text-gray-300 whitespace-pre-line">
@@ -324,6 +360,10 @@ return (
           {tipoOracao === "gloria" && oracoes.gloria}
 
           {tipoOracao === "oracaoDeFatima" && oracoes.oracaoDeFatima}
+
+          {tipoOracao === "salveRainha" && oracoes.salveRainha}
+
+          {tipoOracao === "oracaoFinal" && oracoes.oracaoFinal}
 
         </p>
 

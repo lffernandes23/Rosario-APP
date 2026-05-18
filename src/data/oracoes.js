@@ -71,9 +71,39 @@ Como era no princípio,
 agora e sempre.
 Amém.
 `,
-    oracaoDeFatima:`
-    Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno; 
-    levai as almas todas para o céu, 
-    e socorrei principalmente as que mais precisarem.
-    `
+   oracaoDeFatima:`
+  Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno; 
+  levai as almas todas para o céu, 
+  e socorrei principalmente as que mais precisarem.
+  `,
+
+  salveRainha:`
+Salve, Rainha, 
+mãe de misericórdia, 
+vida, doçura, esperança nossa, salve! 
+A Vós bradamos, 
+os degredados filhos de Eva. 
+A Vós suspiramos, gemendo e chorando 
+neste vale de lágrimas. 
+Eia, pois, advogada nossa, 
+esses Vossos olhos misericordiosos 
+a nós volvei. 
+E, depois deste desterro, 
+nos mostrai Jesus, bendito fruto 
+do Vosso ventre. 
+Ó clemente, ó piedosa, 
+ó doce Virgem Maria. 
+
+Rogai por nós, Santa Mãe de Deus, 
+para que sejamos dignos das promessas de Cristo.
+`,
+
+oracaoFinal:`
+  Oh! Deus, cujo Unigênito com sua vida, 
+  morte e ressurreição nos mereceu o prêmio da salvação eterna!
+  Vos suplicamos nos concedas que, 
+  meditando os mistérios do santíssimo Rosário da bem-aventurada Virgem Maria, 
+  imitemos os exemplos que nos ensinam e alcancemos o prêmio que prometem. 
+  Pelo mesmo Jesus Cristo Nosso Senhor. 
+  Amém.`
 };

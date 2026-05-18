@@ -199,11 +199,31 @@ if (tipoOracao === "oracaoDeFatima") {
 
       setTipoOracao("paiNosso");
 
-    } else {
+      return;
 
-      setFinalizado(true);
+  }
+
+  setTipoOracao("salveRainha");
+
+  return;
 
     }
+
+  if (tipoOracao === "salveRainha") {
+
+    setTipoOracao("oracaoFinal");
+
+    return;
+
+  }
+
+  if (tipoOracao === "oracaoFinal") {
+
+    setFinalizado(true);
+
+    localStorage.removeItem("progressoRosario");
+
+    return;
 
   }
 
@@ -230,7 +250,7 @@ if (tipoOracao === "oracaoDeFatima") {
         </h1>
 
         <p className="text-2xl text-center">
-          Você concluiu o Terço.
+          Você concluiu o Rosário.
         </p>
 
         <p className="text-yellow-400">
@@ -358,6 +378,12 @@ if (tipoOracao === "oracaoDeFatima") {
           {tipoOracao === "oracaoDeFatima" &&
             "Oração de Fátima"}
 
+          {tipoOracao === "salveRainha" &&
+            "Salve Rainha"}
+
+          {tipoOracao === "oracaoFinal" &&
+            "Oração Final"}
+
         </h3>
 
         <p className="
@@ -379,6 +405,12 @@ if (tipoOracao === "oracaoDeFatima") {
 
           {tipoOracao === "oracaoDeFatima" &&
             oracoes.oracaoDeFatima}
+
+            {tipoOracao === "salveRainha" &&
+              oracoes.salveRainha}
+
+            {tipoOracao === "oracaoFinal" &&
+              oracoes.oracaoFinal}
 
         </p>
 
