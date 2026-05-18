@@ -468,7 +468,7 @@ if (tipoOracao === "oracaoDeFatima") {
             transition
           "
         >
-          Resetar
+          Recomeçar
         </button>
 
       </div>

@@ -418,7 +418,7 @@ return (
             transition
           "
         >
-          Resetar
+          Recomeçar
         </button>
 
     </div>
