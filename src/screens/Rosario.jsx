@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 
 import { oracoes } from "../data/oracoes";
 import { buildRosario } from "../utils/buildRosario";
+import { advanceRosario } from "../utils/advanceRosario";
 
 import MysteryCard from "../components/MysteryCard";
 import Counter from "../components/Counter";
 import PrayerButton from "../components/PrayerButton";
 import RosaryProgress from "../components/RosaryProgress";
 import OverallProgress from "../components/OverallProgress";
+import { TIPOS_ORACAO } from "../constants/tiposOracao";
 
 function Rosario() {
 
@@ -62,7 +64,7 @@ function Rosario() {
       return JSON.parse(progressoSalvo).tipoOracao;
     }
 
-    return "credo";
+    return TIPOS_ORACAO.CREDO;
 
   });
 
@@ -110,7 +112,7 @@ function Rosario() {
 
     setFaseInicial(true);
 
-    setTipoOracao("credo");
+    setTipoOracao(TIPOS_ORACAO.CREDO);
 
     setFinalizado(false);
 
@@ -121,7 +123,7 @@ function Rosario() {
   function voltarConta() {
 
     if (
-      tipoOracao === "aveMaria" && 
+      tipoOracao === TIPOS_ORACAO.AVE_MARIA && 
       contaAtual > 1
     ) {
 
@@ -133,101 +135,19 @@ function Rosario() {
 
   function avancarConta() {
 
-    if (tipoOracao === "credo") {
-
-      setTipoOracao("paiNosso");
-
-      return;
-
-    }
-
-    if (tipoOracao === "paiNosso") {
-
-      setTipoOracao("aveMaria");
-
-      return;
-
-    }
-
-    if (tipoOracao === "aveMaria") {
-
-      if (
-        faseInicial
-          ? contaAtual < 3
-          : contaAtual < 10
-      ) {
-
-        setContaAtual(contaAtual + 1);
-
-      } else {
-
-        setTipoOracao("gloria");
-
-      }
-
-      return;
-
-    }
-
-    if (tipoOracao === "gloria") {
-
-      setTipoOracao("oracaoDeFatima");
-
-      return;
-
-    }
-
-if (tipoOracao === "oracaoDeFatima") {
-
-  if (faseInicial) {
-
-    setFaseInicial(false);
-
-    setContaAtual(1);
-
-    setTipoOracao("paiNosso");
-
-    return;
+    advanceRosario({
+      tipoOracao,
+      faseInicial,
+      contaAtual,
+      misterioAtual,
+      setTipoOracao,
+      setContaAtual,
+      setMisterioAtual,
+      setFaseInicial,
+      setFinalizado
+    });
 
   }
-
-  if (misterioAtual < 19) {
-
-      setMisterioAtual(misterioAtual + 1);
-
-      setContaAtual(1);
-
-      setTipoOracao("paiNosso");
-
-      return;
-
-  }
-
-  setTipoOracao("salveRainha");
-
-  return;
-
-    }
-
-  if (tipoOracao === "salveRainha") {
-
-    setTipoOracao("oracaoFinal");
-
-    return;
-
-  }
-
-  if (tipoOracao === "oracaoFinal") {
-
-    setFinalizado(true);
-
-    localStorage.removeItem("progressoRosario");
-
-    return;
-
-  }
-
-}
 
   if (finalizado) {
 
@@ -333,7 +253,7 @@ if (tipoOracao === "oracaoDeFatima") {
 
       )}
 
-      {tipoOracao === "aveMaria" && (
+      {tipoOracao === TIPOS_ORACAO.AVE_MARIA && (
 
         <>
 
@@ -363,26 +283,19 @@ if (tipoOracao === "oracaoDeFatima") {
           mb-4
         ">
 
-          {tipoOracao === "credo" &&
-            "Credo"}
+          {tipoOracao === TIPOS_ORACAO.CREDO && "Credo"}
 
-          {tipoOracao === "paiNosso" &&
-            "Pai Nosso"}
+          {tipoOracao === TIPOS_ORACAO.PAI_NOSSO &&  "Pai Nosso"}
 
-          {tipoOracao === "aveMaria" &&
-            "Ave Maria"}
+          {tipoOracao === TIPOS_ORACAO.AVE_MARIA && "Ave Maria"}
 
-          {tipoOracao === "gloria" &&
-            "Glória ao Pai"}
+          {tipoOracao === TIPOS_ORACAO.GLORIA && "Glória ao Pai"}
 
-          {tipoOracao === "oracaoDeFatima" &&
-            "Oração de Fátima"}
+          {tipoOracao === TIPOS_ORACAO.FATIMA && "Oração de Fátima"}
 
-          {tipoOracao === "salveRainha" &&
-            "Salve Rainha"}
+          {tipoOracao === TIPOS_ORACAO.SALVE_RAINHA && "Salve Rainha"}
 
-          {tipoOracao === "oracaoFinal" &&
-            "Oração Final"}
+          {tipoOracao === TIPOS_ORACAO.ORACAO_FINAL && "Oração Final"}
 
         </h3>
 
@@ -391,26 +304,19 @@ if (tipoOracao === "oracaoDeFatima") {
           whitespace-pre-line
         ">
 
-          {tipoOracao === "credo" &&
-            oracoes.credo}
+          {tipoOracao === TIPOS_ORACAO.CREDO && oracoes.credo}
 
-          {tipoOracao === "paiNosso" &&
-            oracoes.paiNosso}
+          {tipoOracao === TIPOS_ORACAO.PAI_NOSSO && oracoes.paiNosso}
 
-          {tipoOracao === "aveMaria" &&
-            oracoes.aveMaria}
+          {tipoOracao === TIPOS_ORACAO.AVE_MARIA && oracoes.aveMaria}
 
-          {tipoOracao === "gloria" &&
-            oracoes.gloria}
+          {tipoOracao === TIPOS_ORACAO.GLORIA && oracoes.gloria}
 
-          {tipoOracao === "oracaoDeFatima" &&
-            oracoes.oracaoDeFatima}
+          {tipoOracao === TIPOS_ORACAO.FATIMA && oracoes.oracaoDeFatima}
 
-            {tipoOracao === "salveRainha" &&
-              oracoes.salveRainha}
+            {tipoOracao === TIPOS_ORACAO.SALVE_RAINHA && oracoes.salveRainha}
 
-            {tipoOracao === "oracaoFinal" &&
-              oracoes.oracaoFinal}
+            {tipoOracao === TIPOS_ORACAO.ORACAO_FINAL && oracoes.oracaoFinal}
 
         </p>
 
@@ -428,7 +334,7 @@ if (tipoOracao === "oracaoDeFatima") {
           <button
             onClick={voltarConta}
             disabled={
-              tipoOracao !== "aveMaria" ||
+              tipoOracao !== TIPOS_ORACAO.AVE_MARIA ||
               contaAtual <= 1
             }
             className={`
@@ -440,7 +346,7 @@ if (tipoOracao === "oracaoDeFatima") {
               transition
 
               ${
-                tipoOracao === "aveMaria" &&
+                tipoOracao === TIPOS_ORACAO.AVE_MARIA &&
                 contaAtual > 1
                   ? "bg-gray-700 hover:bg-gray-600"
                   : "bg-gray-800 opacity-40 cursor-not-allowed"

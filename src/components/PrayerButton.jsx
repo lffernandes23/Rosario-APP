@@ -14,7 +14,7 @@ function PrayerButton({ onAdvance }) {
         transition
       "
     >
-      Próxima conta
+      Próxima Oração
     </button>
   );
 }
