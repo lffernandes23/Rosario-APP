@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { buildRosario } from "../utils/buildRosario";
@@ -12,6 +13,7 @@ import PrayerButton from "../components/PrayerButton";
 import RosaryProgress from "../components/RosaryProgress";
 import OverallProgress from "../components/OverallProgress";
 import FinishScreen from "../components/FinishScreen";
+import RosaryBeads from "../components/RosaryBeads";
 
 import { TIPOS_ORACAO } from "../constants/tiposOracao";
 import { ESTADO_INICIAL } from "../constants/estadoInicial";
@@ -24,6 +26,8 @@ function Rosario() {
     "progressoRosario",
     ESTADO_INICIAL
   );
+
+  const [historico, setHistorico] = useState([]);
 
   const {
     contaAtual,
@@ -43,17 +47,18 @@ function Rosario() {
 
   function voltarConta() {
 
-    if (
-      tipoOracao === TIPOS_ORACAO.AVE_MARIA &&
-      contaAtual > 1
-    ) {
-
-      setEstado({
-        ...estado,
-        contaAtual: contaAtual - 1
-      });
-
+    if (historico.length === 0) {
+      return;
     }
+
+    const ultimoEstado =
+      historico[historico.length - 1];
+
+    setEstado(ultimoEstado);
+
+    setHistorico(prev =>
+      prev.slice(0, -1)
+    );
 
   }
 
@@ -81,6 +86,11 @@ function Rosario() {
       }
 
     }
+
+    setHistorico(prev => [
+      ...prev,
+      estado
+    ]);
 
     setEstado(
       advanceRosario(estado)
@@ -185,10 +195,7 @@ function Rosario() {
 
         <button
           onClick={voltarConta}
-          disabled={
-            tipoOracao !== TIPOS_ORACAO.AVE_MARIA ||
-            contaAtual <= 1
-          }
+          disabled={historico.length === 0}
           className={`
               flex-1
               px-5
@@ -198,8 +205,7 @@ function Rosario() {
               active:scale-95
               transition
 
-              ${tipoOracao === TIPOS_ORACAO.AVE_MARIA &&
-              contaAtual > 1
+              ${historico.length > 0
               ? "bg-gray-700 hover:bg-gray-600"
               : "bg-gray-800 opacity-40 cursor-not-allowed"
             }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { misterios } from "../data/misterios";
@@ -18,6 +19,7 @@ import PrayerButton from "../components/PrayerButton";
 import RosaryProgress from "../components/RosaryProgress";
 import OverallProgress from "../components/OverallProgress";
 import FinishScreen from "../components/FinishScreen";
+import RosaryBeads from "../components/RosaryBeads";
 
 function Terco() {
 
@@ -25,6 +27,8 @@ function Terco() {
     "progressoTerco",
     ESTADO_INICIAL
   );
+
+  const [historico, setHistorico] = useState([]);
 
   const {
     contaAtual,
@@ -49,23 +53,29 @@ function Terco() {
 
   function voltarConta() {
 
-    if (
-      tipoOracao === TIPOS_ORACAO.AVE_MARIA &&
-      contaAtual > 1
-    ) {
-
-      setEstado({
-        ...estado,
-        contaAtual: contaAtual - 1
-      });
-
+    if (historico.length === 0) {
+      return;
     }
+
+    const ultimoEstado =
+      historico[historico.length - 1];
+
+    setEstado(ultimoEstado);
+
+    setHistorico(prev =>
+      prev.slice(0, -1)
+    );
 
   }
 
   function avancarConta() {
 
     vibrateByPrayer(tipoOracao);
+
+    setHistorico(prev => [
+      ...prev,
+      estado
+    ]);
 
     setEstado(
       advanceTerco(estado)
@@ -163,10 +173,7 @@ function Terco() {
 
         <button
           onClick={voltarConta}
-          disabled={
-            tipoOracao !== TIPOS_ORACAO.AVE_MARIA ||
-            contaAtual <= 1
-          }
+          disabled={historico.length === 0}
           className={`
           flex-1
           px-5
@@ -176,8 +183,7 @@ function Terco() {
           active:scale-95
           transition
 
-          ${tipoOracao === TIPOS_ORACAO.AVE_MARIA &&
-              contaAtual > 1
+          ${historico.length > 0
               ? "bg-gray-700 hover:bg-gray-600"
               : "bg-gray-800 opacity-40 cursor-not-allowed"
             }
