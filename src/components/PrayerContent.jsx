@@ -1,5 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 
+import { getPrayerText } from "../utils/getPrayerText";
+import { getPrayerTitle } from "../utils/getPrayerTitle";
+
 function PrayerContent({ tipoOracao }) {
 
   return (
@@ -30,7 +33,20 @@ function PrayerContent({ tipoOracao }) {
         "
       >
 
-        {/* conteúdo */}
+        <h3 className="
+          text-2xl
+          font-semibold
+          mb-4
+        ">
+          {getPrayerTitle(tipoOracao)}
+        </h3>
+
+        <p className="
+          text-gray-300
+          whitespace-pre-line
+        ">
+          {getPrayerText(tipoOracao)}
+        </p>
 
       </motion.div>
 
