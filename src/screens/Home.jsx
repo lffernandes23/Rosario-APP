@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Heart, Church, Cross, Sparkles } from "lucide-react";
+import { Heart, Church, Cross, Sparkles, BookOpen } from "lucide-react";
 
 function Home() {
 
@@ -119,6 +119,30 @@ function Home() {
               <Sparkles size={20} />
               Rezar Rosário
             </div>
+          </Link>
+
+          <Link
+            to="/guia"
+            className="
+              bg-white/10
+              backdrop-blur-md
+              border
+              border-white/10
+              py-4
+              rounded-2xl
+              text-center
+              font-bold
+              hover:bg-white/20
+              active:scale-95
+              transition
+            "
+          >
+
+            <div className="flex items-center justify-center gap-2">
+              <BookOpen size={20} />
+              Guia Completo
+            </div>
+
           </Link>
 
         </div>

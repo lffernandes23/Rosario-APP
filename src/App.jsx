@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import Home from "./screens/Home";
 import Terco from "./screens/Terco";
 import Rosario from "./screens/Rosario";
+import Guia from "./screens/Guia";
 
 function AnimatedRoutes() {
 
@@ -31,6 +32,11 @@ function AnimatedRoutes() {
         <Route
           path="/rosario"
           element={<Rosario />}
+        />
+
+        <Route
+          path="/guia"
+          element={<Guia />}
         />
 
       </Routes>
