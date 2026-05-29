@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function FinishScreen({
   titulo,
@@ -8,9 +9,21 @@ function FinishScreen({
 
   return (
 
-    <div className="
+    <motion.div
+        initial={{
+          opacity: 0,
+          scale: 0.95
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1
+        }}
+        transition={{
+          duration: 0.5
+        }}
+        className="
       min-h-screen
-      bg-gray-900
+      bg-gradient-to-b from-gray-900 to-black
       text-white
       flex
       flex-col
@@ -41,7 +54,7 @@ function FinishScreen({
         to="/"
         onClick={onReset}
         className="
-          bg-yellow-400
+          bg-yellow-400 shadow-lg shadow-yellow-500/20
           text-black
           px-6
           py-3
@@ -52,7 +65,7 @@ function FinishScreen({
         Voltar ao início
       </Link>
 
-    </div>
+    </motion.div>
 
   );
 

@@ -1,7 +1,28 @@
+import { motion } from "framer-motion";
+
 function MysteryCard({ titulo, meditacao }) {
 
   return (
-    <div className="bg-gray-800 p-6 rounded-2xl w-full max-w-md text-center shadow-lg">
+    <motion.div
+      initial={{
+        opacity: 0,
+        scale: 0.95
+      }}
+      animate={{
+        opacity: 1,
+        scale: 1
+      }}
+      transition={{
+        duration: 0.3
+      }}
+      className="
+        bg-gray-800
+        rounded-2xl
+        p-6
+        max-w-xl
+        shadow-lg
+      "
+    >
 
       <h2 className="text-2xl font-bold mb-4">
         {titulo}
@@ -11,7 +32,7 @@ function MysteryCard({ titulo, meditacao }) {
         {meditacao}
       </p>
 
-    </div>
+    </motion.div>
   );
 }
 

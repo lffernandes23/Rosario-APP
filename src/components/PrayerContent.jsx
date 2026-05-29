@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 
-import { getPrayerText } from "../utils/getPrayerText";
 import { getPrayerTitle } from "../utils/getPrayerTitle";
+import { getPrayerText } from "../utils/getPrayerText";
 
 function PrayerContent({ tipoOracao }) {
 
@@ -13,7 +13,7 @@ function PrayerContent({ tipoOracao }) {
         key={tipoOracao}
         initial={{
           opacity: 0,
-          y: 20
+          y: 15
         }}
         animate={{
           opacity: 1,
@@ -21,10 +21,10 @@ function PrayerContent({ tipoOracao }) {
         }}
         exit={{
           opacity: 0,
-          y: -20
+          y: -15
         }}
         transition={{
-          duration: 0.3
+          duration: 0.25
         }}
         className="
           max-w-lg

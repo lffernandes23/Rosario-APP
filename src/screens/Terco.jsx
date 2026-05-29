@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { misterios } from "../data/misterios";
-import { oracoes } from "../data/oracoes";
 
 import { TIPOS_ORACAO } from "../constants/tiposOracao";
 import { ESTADO_INICIAL } from "../constants/estadoInicial";
@@ -11,6 +9,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 import { advanceTerco } from "../utils/advanceTerco";
 import { getMysteriesByDay } from "../utils/getMysteriesByDay";
+import { vibrateByPrayer } from "../utils/vibrate";
 
 import PrayerContent from "../components/PrayerContent";
 import MysteryCard from "../components/MysteryCard";
@@ -66,9 +65,7 @@ function Terco() {
 
   function avancarConta() {
 
-    if (navigator.vibrate) {
-      navigator.vibrate(50);
-    }
+    vibrateByPrayer(tipoOracao);
 
     setEstado(
       advanceTerco(estado)
@@ -88,7 +85,7 @@ function Terco() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center gap-6 p-6">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex flex-col items-center justify-center gap-6 p-6">
 
       <h1 className="text-3xl md:text-4xl font-bold">
         📿 Rosário App
@@ -117,6 +114,7 @@ function Terco() {
             py-2
             rounded-xl
             hover:bg-gray-700
+            active:scale-95
             transition
           "
         >
@@ -175,6 +173,7 @@ function Terco() {
           py-3
           rounded-2xl
           font-bold
+          active:scale-95
           transition
 
           ${tipoOracao === TIPOS_ORACAO.AVE_MARIA &&
@@ -199,6 +198,7 @@ function Terco() {
               rounded-2xl
               font-bold
               hover:bg-red-400
+              active:scale-95
               transition
             "
         >

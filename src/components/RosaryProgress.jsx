@@ -3,30 +3,36 @@ function RosaryProgress({
   maxContas
 }) {
 
-  const contas = Array.from(
-    { length: maxContas },
-    (_, index) => index + 1
-  );
-
   return (
 
-    <div className="flex gap-3">
+    <div className="
+        flex
+        items-center
+        justify-center
+        gap-2
+        flex-wrap
+        max-w-sm
+    ">
 
-      {contas.map((conta) => (
+      {[...Array(maxContas)].map((_, index) => (
 
         <div
-          key={conta}
+          key={index}
           className={`
-            w-5
-            h-5
             rounded-full
-            transition
+            transition-all
+            duration-300
+
             ${
-              conta <= contaAtual
-                ? "bg-yellow-400"
+              index < contaAtual
+                ? "bg-yellow-400 scale-110 shadow-md shadow-yellow-500/40"
                 : "bg-gray-700"
             }
           `}
+          style={{
+            width: index === 9 ? 18 : 14,
+            height: index === 9 ? 18 : 14
+          }}
         />
 
       ))}
@@ -34,6 +40,7 @@ function RosaryProgress({
     </div>
 
   );
+
 }
 
 export default RosaryProgress;

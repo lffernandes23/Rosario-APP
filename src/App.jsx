@@ -1,20 +1,22 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import Home from "./screens/Home";
 import Terco from "./screens/Terco";
 import Rosario from "./screens/Rosario";
 
-function App() {
+function AnimatedRoutes() {
+
+  const location = useLocation();
 
   return (
 
-    <BrowserRouter>
+    <AnimatePresence mode="wait">
 
-      <Routes>
+      <Routes
+        location={location}
+        key={location.pathname}
+      >
 
         <Route
           path="/"
@@ -33,9 +35,24 @@ function App() {
 
       </Routes>
 
+    </AnimatePresence>
+
+  );
+
+}
+
+function App() {
+
+  return (
+
+    <BrowserRouter>
+
+      <AnimatedRoutes />
+
     </BrowserRouter>
 
   );
+
 }
 
 export default App;

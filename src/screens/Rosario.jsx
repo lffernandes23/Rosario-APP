@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import { buildRosario } from "../utils/buildRosario";
 import { advanceRosario } from "../utils/advanceRosario";
+import { vibrateByPrayer } from "../utils/vibrate";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 import PrayerContent from "../components/PrayerContent";
@@ -58,8 +59,27 @@ function Rosario() {
 
   function avancarConta() {
 
-    if (navigator.vibrate) {
-      navigator.vibrate(50);
+    if ("vibrate" in navigator) {
+
+      switch (tipoOracao) {
+
+        case TIPOS_ORACAO.AVE_MARIA:
+          navigator.vibrate(30);
+          break;
+
+        case TIPOS_ORACAO.PAI_NOSSO:
+          navigator.vibrate([40, 20, 40]);
+          break;
+
+        case TIPOS_ORACAO.GLORIA:
+          navigator.vibrate([20, 20, 20]);
+          break;
+
+        default:
+          navigator.vibrate(50);
+
+      }
+
     }
 
     setEstado(
@@ -83,7 +103,7 @@ function Rosario() {
 
     <div className="
       min-h-screen
-      bg-gray-900
+      bg-gradient-to-b from-gray-900 to-black
       text-white
       flex
       flex-col
@@ -107,6 +127,7 @@ function Rosario() {
             py-2
             rounded-xl
             hover:bg-gray-700
+            active:scale-95
             transition
           "
         >
@@ -174,6 +195,7 @@ function Rosario() {
               py-3
               rounded-2xl
               font-bold
+              active:scale-95
               transition
 
               ${tipoOracao === TIPOS_ORACAO.AVE_MARIA &&
@@ -201,6 +223,7 @@ function Rosario() {
             rounded-2xl
             font-bold
             hover:bg-red-400
+            active:scale-95
             transition
           "
         >
