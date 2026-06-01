@@ -1,46 +1,48 @@
 function GuideSection({
+  id,
   titulo,
   emoji,
   children
 }) {
-
   return (
-
     <section
+      id={id}
       className="
-        bg-white/5
-        backdrop-blur-sm
-        border
-        border-white/10
-        rounded-3xl
-        p-6
-        md:p-8
-        shadow-xl
-        space-y-4
+        space-y-3
+        scroll-mt-32
       "
     >
-
-      <h2 className="
-        text-2xl
-        md:text-3xl
-        font-bold
-        text-yellow-400
-      ">
+      <h2
+        className="
+          text-3xl
+          font-bold
+          text-yellow-400
+          text-center
+        "
+      >
         {emoji} {titulo}
       </h2>
 
-      <div className="
-        text-gray-300
-        whitespace-pre-line
-        leading-8
-      ">
-        {children}
+      <div
+        className="
+          bg-white/5
+          border
+          border-white/10
+          rounded-2xl
+          p-6
+
+          text-gray-200
+          leading-8
+          whitespace-pre-line
+          text-center
+        "
+      >
+        <div className="max-w-2xl mx-auto">
+          {children}
+        </div>
       </div>
-
     </section>
-
   );
-
 }
 
 export default GuideSection;

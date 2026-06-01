@@ -4,34 +4,33 @@ import { oracoes } from "../data/oracoes";
 import { misterios } from "../data/misterios";
 
 import GuideSection from "../components/GuideSection";
+import BackToTopButton from "../components/BackToTopButton";
+import ReadingProgress from "../components/ReadingProgress";
 
 import { getMysteriesByDay } from "../utils/getMysteriesByDay";
 
 function Guia() {
-
   const tipoMisterio = getMysteriesByDay();
 
-  const misteriosDoDia =
-    misterios[tipoMisterio];
+  const misteriosDoDia = misterios[tipoMisterio];
 
-  const diaSemana =
-    new Date().toLocaleDateString("pt-BR", {
-      weekday: "long"
-    });
+  const diaSemana = new Date().toLocaleDateString("pt-BR", {
+    weekday: "long",
+  });
 
   return (
+    <>
+  <ReadingProgress />
 
-    <div className="
-      min-h-screen
-      bg-gradient-to-b
-      from-gray-900
-      to-black
-      text-white
-      p-6
-    ">
-
+  <div className="
+    min-h-screen
+    bg-gradient-to-b
+    from-gray-900
+    to-black
+    text-white
+    p-6
+  ">
       <div className="max-w-4xl mx-auto space-y-10">
-
         <Link
           to="/"
           className="
@@ -48,100 +47,131 @@ function Guia() {
         </Link>
 
         <div className="text-center space-y-4">
-
-          <h1 className="text-5xl font-bold">
+          <h1 className="text-4xl md:text-5xl font-bold">
             📿 Guia Completo do Terço
           </h1>
 
           <p className="text-gray-300">
             Aprenda como rezar o Santo Terço.
           </p>
-
         </div>
 
-        {/* Sinal da Cruz */}
+        <div
+          className="
+            sticky
+            top-2 
+            md:top-4
+            z-50
 
-        <GuideSection
-          titulo="Sinal da Cruz"
-          emoji="✝️"
+            flex
+            flex-wrap
+            justify-center
+            gap-3
+
+            bg-gray-900/80
+            backdrop-blur-md
+
+            p-3
+            rounded-2xl
+            border
+            border-white/10
+
+            shadow-lg
+          "
         >
 
-          <p className="text-gray-300 whitespace-pre-line">
-            Em nome do Pai, do Filho e do Espírito Santo. Amém.
-          </p>
+  <a
+    href="#credo"
+    className="
+      bg-yellow-400
+      text-black
+      px-4
+      py-2
+      rounded-xl
+      font-semibold
+      hover:scale-105
+      transition
+    "
+  >
+    ✝️ Credo
+  </a>
 
+  <a
+    href="#misterios"
+    className="
+      bg-white/10
+      border
+      border-white/10
+      px-4
+      py-2
+      rounded-xl
+      hover:bg-white/20
+      transition
+    "
+  >
+    📿 Mistérios
+  </a>
+
+  <a
+    href="#salve-rainha"
+    className="
+      bg-white/10
+      border
+      border-white/10
+      px-4
+      py-2
+      rounded-xl
+      hover:bg-white/20
+      transition
+    "
+  >
+    🙏 Salve Rainha
+  </a>
+
+  <a
+    href="#oracao-final"
+    className="
+      bg-white/10
+      border
+      border-white/10
+      px-4
+      py-2
+      rounded-xl
+      hover:bg-white/20
+      transition
+    "
+  >
+    ✨ Oração Final
+  </a>
+
+</div>
+
+        <GuideSection titulo="Sinal da Cruz" emoji="✝️">
+          Em nome do Pai, do Filho e do Espírito Santo. Amém.
         </GuideSection>
 
-        {/* Credo */}
-
-        <GuideSection
-          titulo="Credo"
-          emoji="✝️"
-        >
-
-          <p className="text-gray-300 whitespace-pre-line">
-            {oracoes.credo}
-          </p>
-
+        <GuideSection id="credo" titulo="Credo" emoji="✝️">
+          {oracoes.credo}
         </GuideSection>
 
-        {/* Pai Nosso */}
-
-        <GuideSection
-          titulo="Pai Nosso"
-          emoji="🙏"
-        >
-
-          <p className="text-gray-300 whitespace-pre-line">
-            {oracoes.paiNosso}
-          </p>
-
+        <GuideSection titulo="Pai Nosso" emoji="🙏">
+          {oracoes.paiNosso}
         </GuideSection>
 
-        {/* Ave Maria */}
-
-        <GuideSection
-          titulo="Ave Maria"
-          emoji="🌹"
-        >
-
-          <p className="text-gray-300 whitespace-pre-line">
-            {oracoes.aveMaria}
-          </p>
-
+        <GuideSection titulo="Ave Maria" emoji="🌹">
+          {oracoes.aveMaria}
         </GuideSection>
 
-        {/* Gloria */}
-
-        <GuideSection
-          titulo="Glória ao Pai"
-          emoji="✨"
-        >
-
-          <p className="text-gray-300 whitespace-pre-line">
-            {oracoes.gloria}
-          </p>
-
+        <GuideSection titulo="Glória ao Pai" emoji="✨">
+          {oracoes.gloria}
         </GuideSection>
 
-        {/* Fatima */}
-
-        <GuideSection
-          titulo="Oração de Fátima"
-          emoji="🔥"
-        >
-
-          <p className="text-gray-300 whitespace-pre-line">
-            {oracoes.oracaoDeFatima}
-          </p>
-
+        <GuideSection titulo="Oração de Fátima" emoji="🔥">
+          {oracoes.oracaoDeFatima}
         </GuideSection>
-
-        {/* Estrutura */}
 
         <section className="space-y-4">
-
-          <h2 className="text-3xl font-bold text-yellow-400">
+          <h2 className="text-3xl font-bold text-yellow-400 text-center">
             📿 Estrutura do Terço
           </h2>
 
@@ -155,8 +185,8 @@ function Guia() {
             hover:border-yellow-400/30
             hover:bg-white/10
             transition
+            text-center
           ">
-
             <p>✝️ Sinal da Cruz</p>
             <p>✝️ Credo</p>
             <p>🙏 1 Pai Nosso</p>
@@ -170,101 +200,127 @@ function Guia() {
             <p>🔁 Repetir por 5 dezenas</p>
             <p>🙏 Salve Rainha</p>
             <p>✨ Oração Final</p>
-
           </div>
-
         </section>
 
-        {/* Mistérios do Dia */}
-
-        <section className="space-y-6">
-
-          <div className="text-center space-y-3">
-
-            <h2 className="text-3xl font-bold text-yellow-400">
+        <section id="misterios" className="space-y-6">
+          <div
+            className="
+              bg-yellow-400/10
+              border
+              border-yellow-400/20
+              rounded-2xl
+              p-5
+              mt-4
+            "
+          >
+            <h2 className="text-3xl font-bold text-yellow-400 mb-2 text-center">
               📿 Mistérios do Dia
             </h2>
 
-            <p className="text-gray-400 capitalize">
-              {diaSemana}
-            </p>
-
-            <p className="text-gray-300">
-              Hoje contemplamos os{" "}
-              <span className="text-yellow-400 font-semibold">
-                {tipoMisterio}
+            <p className="text-gray-300 text-lg text-center">
+              Hoje é{" "}
+              <span className="capitalize font-semibold">
+                {diaSemana}
               </span>
             </p>
 
+            <p className="mt-2 text-xl font-bold text-yellow-400 text-center">
+              Contemplamos os {tipoMisterio}
+            </p>
+
+            <p className="mt-2 text-gray-400 text-center">
+              Reserve alguns instantes para meditar cada mistério antes
+              de iniciar sua oração.
+            </p>
           </div>
 
-          <div className="space-y-4">
-
+          <div className="space-y-5">
             {misteriosDoDia.map((misterio, index) => (
-
               <div
                 key={index}
                 className="
                   bg-white/5
+                  backdrop-blur-sm
                   border
                   border-white/10
                   rounded-2xl
                   p-6
-                  backdrop-blur-sm
                   hover:border-yellow-400/30
                   hover:bg-white/10
                   transition
                 "
               >
-
-                <h3 className="text-2xl font-semibold mb-3">
+                <h3 className="
+                  text-xl
+                  md:text-2xl
+                  font-bold
+                  text-yellow-400
+                  mb-4
+                ">
                   {misterio.titulo}
                 </h3>
 
-                <p className="text-gray-300 leading-7">
-                  👉 {misterio.meditacao}
-                </p>
+                <div className="
+                  border-l-4
+                  border-yellow-400/40
+                  pl-4
+                ">
+                  <p className="
+                    text-sm
+                    uppercase
+                    tracking-wider
+                    text-gray-500
+                    mb-2
+                  ">
+                    Contemplação
+                  </p>
 
+                  <p className="
+                    text-gray-200
+                    leading-8
+                  ">
+                    {misterio.meditacao}
+                  </p>
+                </div>
               </div>
-
             ))}
-
           </div>
-
         </section>
 
-        {/* Salve Rainha */}
-
-        <GuideSection
-          titulo="Salve Rainha"
-          emoji="🙏"
-        >
-
-          <p className="text-gray-300 whitespace-pre-line">
-            {oracoes.salveRainha}
-          </p>
-
+        <GuideSection id="salve-rainha" titulo="Salve Rainha" emoji="🙏">
+          {oracoes.salveRainha}
         </GuideSection>
 
-        {/* Oração Final */}
-
-        <GuideSection
-          titulo="Oração Final"
-          emoji="✨"
-        >
-
-          <p className="text-gray-300 whitespace-pre-line">
-            {oracoes.oracaoFinal}
-          </p>
-
+        <GuideSection id="oracao-final" titulo="Oração Final" emoji="✨">
+          {oracoes.oracaoFinal}
         </GuideSection>
 
+        <section className="
+          text-center
+          py-8
+          border-t
+          border-white/10
+        ">
+          <h2 className="
+            text-2xl
+            font-bold
+            text-yellow-400
+            mb-4
+          ">
+            ✝️ Encerramento
+          </h2>
+
+          <p className="text-gray-300">
+            Em nome do Pai, do Filho e do Espírito Santo. Amém.
+          </p>
+        </section>
       </div>
 
+      <BackToTopButton />
     </div>
-
+    </>
   );
-
 }
 
 export default Guia;
