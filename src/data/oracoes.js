@@ -74,7 +74,8 @@ Amém.
    oracaoDeFatima:`
   Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno; 
   levai as almas todas para o céu, 
-  e socorrei principalmente as que mais precisarem.
+  e socorrei principalmente as que mais precisarem
+  da vossa misericórdia.
   `,
 
   salveRainha:`
