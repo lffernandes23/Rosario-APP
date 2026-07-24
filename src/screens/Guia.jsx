@@ -146,12 +146,14 @@ function Guia() {
 
 </div>
 
-        <GuideSection titulo="Sinal da Cruz" emoji="✝️">
-          <br>Pelo sinal da Santa Cruz, (faça uma cruz na testa)</br>
-          <br>livrai-nos, Deus, nosso Senhor, (faça uma cruz na boca)</br>
-          <br>dos nossos inimigos. (faça uma cruz no peito)</br>
-          <br>Em nome do Pai, do Filho e do Espírito Santo. Amém.</br>
-        </GuideSection>
+      <GuideSection titulo="Sinal da Cruz" emoji="✝️">
+        <>
+          Pelo sinal da Santa Cruz, (faça uma cruz na testa) <br />
+          livrai-nos, Deus, nosso Senhor, (faça uma cruz na boca) <br />
+          dos nossos inimigos. (faça uma cruz no peito) <br />
+          Em nome do Pai, do Filho e do Espírito Santo. Amém.
+        </>
+      </GuideSection>
 
         <GuideSection id="credo" titulo="Credo" emoji="✝️">
           {oracoes.credo}
