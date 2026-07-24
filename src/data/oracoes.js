@@ -84,24 +84,19 @@ sinalDaCruz: `
   Dignai-vos agora e para sempre tomar-nos debaixo de vosso poderoso amparo, 
   e para mais vos obrigar, vos saudamos com uma Salve-Rainha.
 
-  Salve, Rainha, 
-  mãe de misericórdia, 
+  Salve, Rainha, mãe de misericórdia, 
   vida, doçura, esperança nossa, salve! 
-  A Vós bradamos, 
-  os degredados filhos de Eva. 
-  A Vós suspiramos, gemendo e chorando 
-  neste vale de lágrimas. 
+  A Vós bradamos, os degredados filhos de Eva. 
+  A Vós suspiramos, gemendo e chorando neste vale de lágrimas. 
   Eia, pois, advogada nossa, 
-  esses Vossos olhos misericordiosos 
-  a nós volvei. 
-  E, depois deste desterro, 
-  nos mostrai Jesus, bendito fruto 
-  do Vosso ventre. 
-  Ó clemente, ó piedosa, 
-  ó doce Virgem Maria. 
+  esses Vossos olhos misericordiosos a nós volvei. 
+  E, depois deste desterro, nos mostrai Jesus, 
+  bendito fruto do Vosso ventre. 
+  Ó clemente, ó piedosa, ó doce Virgem Maria. 
 
   Rogai por nós, Santa Mãe de Deus, 
   para que sejamos dignos das promessas de Cristo.
+  Amém.
 `,
 
 oracaoFinal:`
