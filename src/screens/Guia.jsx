@@ -147,6 +147,9 @@ function Guia() {
 </div>
 
         <GuideSection titulo="Sinal da Cruz" emoji="✝️">
+          Pelo sinal da Santa Cruz, (faça uma cruz na testa)
+          livrai-nos, Deus, nosso Senhor, (faça uma cruz na boca)
+          dos nossos inimigos. (faça uma cruz no peito)
           Em nome do Pai, do Filho e do Espírito Santo. Amém.
         </GuideSection>
 
